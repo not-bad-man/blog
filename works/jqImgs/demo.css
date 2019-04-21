@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(211, 199, 199);
+}
+.wrapper{
+    height: 600px;
+    width: 1000px;
+    /* border: 1px solid black; */
+    /* margin: 300px auto; */
+}
+.wrapper ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wrapper li{
+    border-radius: 15px;
+    display: block;
+    width: 15%;
+    height: 100%;
+    background: rgb(74, 172, 185);
+    overflow: hidden;
+    transition: width 0.5s linear, height 0.5s linear 0.5s;
+}
+.pic{
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    transform: translate3d(0,100%,0);
+    opacity: 0.6;
+}
+.wrapper .pic:hover{
+    opacity: 1;
+    font-size: 20px;
+}
+li.cont:nth-of-type(1) .pic{
+    background-image: url('./image/1.jpg');
+    transition: transform 1.5s linear; 
+}
+li.cont:nth-of-type(2) .pic{
+    background-image: url('./image/2.jpg');
+    transition: transform 1.5s linear 0.2s; 
+}
+li.cont:nth-of-type(3) .pic{
+    background-image: url('./image/3.jpg');
+    transition: transform 1.5s linear 0.4s; 
+}
+li.cont:nth-of-type(4) .pic{
+    background-image: url('./image/4.jpg');
+    transition: transform 1.5s linear 0.6s; 
+}
+li.cont:nth-of-type(5) .pic{
+    background-image: url('./image/5.jpg');
+    transition: transform 1.5s linear 0.8s; 
+}
+li.cont:nth-of-type(6) .pic{
+    background-image: url('./image/6.jpg');
+    transition: transform 1.5s linear 1s; 
+}
+.desc{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(23, 141, 82);
+    font-size: 20px;
+}
+.item{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    height: 24px;
+    width: 30px;
+    line-height: 24px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+.logo{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    height: 24px;
+    width: 24px;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+.logo:after, .logo:before{
+    content: '';
+    display: block;
+    height: 4px;
+    width: 24px;
+    background: #fff;
+    position: absolute;
+}
+.logo:after{
+    transform: translate(0,10px) rotate(45deg);
+}
+.logo:before{
+    transform: translate(0,10px) rotate(-45deg);
+}
+.wrapper-active li:not(.active){
+    width: 0;
+    height: 0;
+    transition: height 0.5s linear, width 0.5s linear 0.5s;
+}
+.wrapper-active li.active{
+    width: 100%;
+    transition: width 0.5s linear 0.5s;
+}
+.wrapper-active .logo, 
+.wrapper-active .item{
+    opacity: 1;
+}
+
+
+
+
+
+
+

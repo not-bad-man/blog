@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正方体旋转</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, .demo{
+            width: 100%;
+            height: 100%;
+        }
+        html {
+            background: rgb(184, 166, 166);
+        }
+        .demo{
+            position: relative;
+            transform: rotate3d(1, 0, 0, 15deg);
+            perspective: 800px;
+        }
+        .wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -200px;
+            margin-left: -200px;
+            height: 400px;
+            width: 400px;
+            transform-style: preserve-3d;
+            transform: rotate3d(1, 1, 0, 15deg);
+            animation: 6s linear infinite;
+        }
+        .box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+            height: 200px;
+            width: 200px;
+            transform-style: preserve-3d;
+            transform: rotate3d(1, 1, 0, 15deg);
+            animation: 6s linear infinite;
+        }
+        .wraMove1{
+            animation-name: wrapperRot1;
+        }
+        .boxMove1{
+            animation-name: boxRot1;
+        }
+        @keyframes wrapperRot1 {
+			0% {
+				transform: rotateX(0) rotateY(0) rotateZ(0);
+			}
+			25% {
+				transform: rotateX(90deg) rotateY(90deg) rotateZ(90deg);
+			}
+			50% {
+				transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+			}
+			75% {
+				transform: rotateX(270deg) rotateY(270deg) rotateZ(270deg);
+			}
+			100% {
+				transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+			}
+		}
+        @keyframes boxRot1 {
+			0% {
+				transform: rotateX(0) rotateY(0) rotateZ(0);
+			}
+			25% {
+				transform: rotateX(90deg) rotateY(90deg) rotateZ(90deg);
+			}
+			50% {
+				transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+			}
+			75% {
+				transform: rotateX(270deg) rotateY(270deg) rotateZ(270deg);
+			}
+			100% {
+				transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+			}
+		}
+        
+        .wraMove2{
+            animation-name: wrapperRot2;
+        }
+        .boxMove2{
+            animation-name: boxRot2;
+        }
+
+        @keyframes wrapperRot2{
+            0% {
+                transform: rotate3d(0, 0, 0, 0);
+            }
+            50%{
+                transform: rotate3d(0, -1, 0, 180deg);
+            }
+            100%{
+                transform: rotate3d(0, -1, 0, 360deg);
+            }
+        }
+        @keyframes boxRot2{
+            0% {
+                transform: rotate3d(0, 0, 0, 0);
+            }
+            50%{
+                transform: rotate3d(0, 1, 0, 360deg);
+            }
+            100%{
+                transform: rotate3d(0, 1, 0, 720deg);
+            }
+        } 
+
+        .wraMove3{
+            animation-name: wrapperRot3;
+        }
+        .boxMove3{
+            animation-name: boxRot3;
+        }
+
+        @keyframes wrapperRot3{
+            0% {
+                transform: rotate3d(0, 0, 0, 0);
+            }
+            50%{
+                transform: rotate3d(1, -1, -1, 180deg);
+            }
+            100%{
+                transform: rotate3d(1, -1, -1, 360deg);
+            }
+        }
+        @keyframes boxRot3{
+            0% {
+                transform: rotate3d(0, 0, 0, 0);
+            }
+            50%{
+                transform: rotate3d(1, 1, 1, 180deg);
+            }
+            100%{
+                transform: rotate3d(1, 1, 1, 360deg);
+            }
+        } 
+
+      
+
+
+        
+
+        .wrapper div:not(.box),
+        .box div{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            opacity: 0.5;
+        }
+        .wrapper div:not(.box){
+            line-height: 400px;
+        }
+        .wrapper div:not(.box):hover{
+            opacity: 1;
+        }
+        .wrapper .box div{
+            line-height: 200px;
+        }
+        .box div:hover{
+            opacity: 1;
+        }
+
+
+        .wrapper div:nth-child(1) {
+            background: rgb(207, 75, 207);
+            transform: rotate3d(0, 0, 0, 0) translate3d(0, 0, 200px);
+        }
+
+        .wrapper div:nth-child(2) {
+            background: rgb(170, 29, 151);
+            transform: rotate3d(1, 0, 0, 90deg) translate3d(0, 0, 200px);
+        }
+
+        .wrapper div:nth-child(3) {
+            background: rgb(177, 216, 104);
+            transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0, 200px);
+        }
+
+        .wrapper div:nth-child(4) {
+            background: rgb(15, 95, 199);
+            transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 0, 200px);
+        }
+
+        .wrapper div:nth-child(5) {
+            background: rgb(52, 148, 116);
+            transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, 200px);
+        }
+
+        .wrapper div:nth-child(6) {
+            background: rgb(44, 148, 23);
+            transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 200px);
+        }
+        .box div:nth-child(1) {
+            background: rgb(50, 37, 104);
+            transform: rotate3d(0, 0, 0, 0) translate3d(0, 0, 100px);
+        }
+
+        .box div:nth-child(2) {
+            background: rgb(109, 104, 139);
+            transform: rotate3d(1, 0, 0, 90deg) translate3d(0, 0, 100px);
+        }
+
+        .box div:nth-child(3) {
+            background: rgb(107, 128, 68);
+            transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0, 100px);
+        }
+
+        .box div:nth-child(4) {
+            background: rgb(15, 95, 199);
+            transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 0, 100px);
+        }
+
+        .box div:nth-child(5) {
+            background: rgb(52, 148, 116);
+            transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, 100px);
+        }
+
+        .box div:nth-child(6) {
+            background: rgb(59, 88, 53);
+            transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 100px);
+        }
+
+        .control{
+            padding: 30px;
+        }
+        .control button{
+            border: none;
+            padding: 10px 5px;
+            box-shadow: 0 0 2px #eee;
+        }
+        .control button:focus{
+            box-shadow: 2px 2px 3px #333;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="wrapper">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div class="box">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </div>
+            </div>
+            
+    </div>
+    <div class="control">
+        <button class="animation_1" autofocus>animation_1</button>
+        <button class="animation_2">animation_2</button>
+        <button class="animation_3">animation_3</button>
+        <button class="slower">减速</button>
+        <button class="faster">加速</button>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script>
+        $('.wrapper').add('.box').on('click',function () {
+            if($(this).css('animation-play-state') == 'running'){
+                $(this).css('animation-play-state','paused');
+            }else{
+                $(this).css('animation-play-state','running');
+            }   
+        })
+        $('.animation_1').on('focus', function () {
+            $('.wrapper').attr('class', 'wrapper wraMove1');
+            $('.box').attr('class', 'box boxMove1');
+        })
+        $('.animation_2').on('focus', function () {
+            $('.wrapper').attr('class', 'wrapper wraMove2');
+            $('.box').attr('class', 'box boxMove2');
+        })
+        $('.animation_3').on('focus', function () {
+            $('.wrapper').attr('class', 'wrapper wraMove3');
+            $('.box').attr('class', 'box boxMove3');
+        })
+        $('.slower').on('click', function () {
+            var duration = parseInt($('.wrapper').css('animation-duration'));
+            $('.wrapper').add('.box').css('animation-duration', duration + 1 + 's');
+        })
+        $('.faster').on('click', function () {
+            var duration = parseInt($('.wrapper').css('animation-duration'));
+            if(duration > 0){
+                $('.wrapper').add('.box').css('animation-duration', duration - 1 + 's');
+            }
+            
+        })
+    </script>
+</body>
+
+</html>
+

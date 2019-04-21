@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #oCanvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400" id="oCanvas"></canvas>
+    <button id="btn">模糊</button>
+    <script>
+    
+        var oCanvas = document.getElementById('oCanvas');
+        var ctx = oCanvas.getContext('2d');
+        var worker = new Worker('./message.js');
+        var img = new Image();
+        img.src = "./img/1.jpg";
+
+        img.onload = function () {
+            ctx.drawImage(img, 0, 0, 400, 400);
+            var imgData = ctx.getImageData(0, 0, 400, 400);
+            btn.onclick = function () {
+                worker.postMessage(imgData);
+                worker.onmessage = function (e) {
+                    ctx.putImageData(e.data, 0, 0);
+                }
+            }
+        }
+
+    
+    </script>
+</body>
+</html>
